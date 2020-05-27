@@ -7,7 +7,7 @@
   "dependencies": {
     "apollo-link-http": "^1.5.17",
     "dotenv": "^8.2.0",
-    "gatsby": "^2.22.11",
+    "gatsby": "^2.17.17",
     "gatsby-image": "^2.4.4",
     "gatsby-plugin-manifest": "^2.4.5",
     "gatsby-plugin-offline": "^3.2.3",
