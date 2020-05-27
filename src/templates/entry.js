@@ -22,7 +22,7 @@ const IndexPage = props => {
 }
 
 export const pageQuery = graphql`
-  query EntryQuery($uri: String!) {
+  query EntryQuery($uri: [String]) {
     craft {
       entry(uri: $uri) {
         id
