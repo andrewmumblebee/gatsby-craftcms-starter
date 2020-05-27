@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -7,27 +7,24 @@ import SEO from "../components/seo"
 const IndexPage = props => {
   const {
     data: {
-      craft: { entries },
+      craft: { entry },
     },
   } = props
 
   return (
     <Layout>
       <SEO title="Home" />
-      {entries.map(({ title, id, uri }) => (
-        <Link key={id} to={uri}>
-          {title}
-        </Link>
-      ))}
-      <Link to="/page-2/">Go to page 2</Link>
+      <h1>{entry.title} </h1>
+      <h2>{entry.id} </h2>
+      <h3>{entry.uri} </h3>
     </Layout>
   )
 }
 
 export const pageQuery = graphql`
-  query IndexQuery {
+  query EntryQuery($uri: String!) {
     craft {
-      entries {
+      entry(uri: $uri) {
         id
         title
         uri
