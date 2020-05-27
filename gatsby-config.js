@@ -1,8 +1,10 @@
 const { createHttpLink } = require("apollo-link-http")
 const fetch = require("node-fetch")
 const store = require("store")
-const sourceNodes = require("gatsby/dist/utils/source-nodes")
-const createSchemaCustomization = require("gatsby/dist/utils/create-schema-customization")
+const sourceNodes = require("gatsby/dist/utils/source-nodes").default
+const {
+  createSchemaCustomization,
+} = require("gatsby/dist/utils/create-schema-customization")
 require("dotenv").config()
 
 const craftGqlUrl = process.env.CRAFT_GQL_URL
@@ -67,7 +69,7 @@ module.exports = {
       if (req.query.token) {
         store.set("X-Craft-Token", req.query.token)
         createSchemaCustomization({ refresh: true }).then(() => {
-          sourceNodes({ webhookBody })
+          sourceNodes({ webhookBody: null, parentSpan: null })
         })
       }
       next()
