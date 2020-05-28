@@ -14,6 +14,7 @@ import Img from "gatsby-image"
  */
 
 const Image = () => {
+  // You can't use static queries on heroku because of a bug https://github.com/gatsbyjs/gatsby/issues/21392
   const data = useStaticQuery(graphql`
     query {
       placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {

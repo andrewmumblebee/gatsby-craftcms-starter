@@ -8,12 +8,13 @@ const IndexPage = props => {
   const {
     data: {
       craft: { entries },
+      site,
     },
   } = props
 
   return (
-    <Layout>
-      <SEO title="Home" />
+    <Layout site={site}>
+      <SEO title="Home" site={site} />
       {entries.map(({ title, id, uri }) => (
         <Link key={id} to={uri}>
           {title}
@@ -31,6 +32,13 @@ export const pageQuery = graphql`
         id
         title
         uri
+      }
+    }
+    site {
+      siteMetadata {
+        title
+        description
+        author
       }
     }
   }
